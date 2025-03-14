@@ -40,9 +40,9 @@
 
             string nameFile = Console.ReadLine();
 
-            if (!nameFile.EndsWith(".txt"))
+            if (!nameFile.EndsWith(".csv"))
             {
-                nameFile += ".txt";
+                nameFile += ".csv";
             }
 
             using (StreamWriter writer = new StreamWriter(nameFile))
@@ -61,36 +61,47 @@
             Console.WriteLine("\nWhat is the name of the file you want to search for?\n");
             string nameFile = Console.ReadLine();
 
-            if (!nameFile.EndsWith(".txt"))
+            if (!nameFile.EndsWith(".csv"))
             {
-                nameFile += ".txt";
+                nameFile += ".csv";
             }
 
             if (!File.Exists(nameFile))
             {
                 Console.WriteLine("\nSorry, the file you are looking for was not found in the system.\n");
+                return;
             }
-            else
+
+            _entries.Clear();
+
+            using (StreamReader reader = new StreamReader(nameFile))
             {
-                using (StreamReader reader = new StreamReader(nameFile))
+                string line;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
+                    string[] partes = line.Split('|');
+
+                    if (partes.Length == 3)
                     {
-                        Console.WriteLine(line);
-                        string[] partes = line.Split('|');
                         Entry newEntry = new Entry();
-                        newEntry._date = partes[0];
-                        newEntry._question = partes[1];
-                        newEntry._answer = partes[2];
+                        newEntry._date = partes[0].Trim();
+                        newEntry._question = partes[1].Trim();
+                        newEntry._answer = partes[2].Trim();
+
                         _entries.Add(newEntry);
                     }
+                    else
+                    {
+                        Console.WriteLine("\nWarning: Incorrect file format, skipping line.\n");
+                    }
                 }
-
             }
 
+            Console.WriteLine("\nEntries loaded successfully!\n");
 
+            DisplayEntries();
         }
+
 
     }
 }
