@@ -1,12 +1,4 @@
-﻿//Author: Santiago Bergerat
-// This program allows users to write journal entries based on random prompts, save them to a CSV file, and load them later. 
-// To exceed the basic requirements, additional improvements were made, including structured file handling with CSV formatting, 
-// ensuring data is stored in an organized manner. The program also incorporates error validation for file handling, preventing 
-// crashes due to missing or incorrectly formatted files. Additionally, when loading a journal file, the entries are automatically 
-// displayed to enhance usability. Input validation was added to the menu to ensure users enter valid options, making the program 
-// more robust and user-friendly. These enhancements improve both functionality and user experience.
-
-
+﻿
 namespace Journal
 {
     class Journal
