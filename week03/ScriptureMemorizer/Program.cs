@@ -1,4 +1,13 @@
+
+
+
 using ScriptureMemorizer;
+
+
+// This program meets the basic requirements of Project W03:
+// - Handles multiple verses and hides random words.
+// - Uses separate classes with proper encapsulation.
+// - No additional creative requirements were implemented.
 
 class Program
 {
